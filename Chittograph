@@ -1,0 +1,44 @@
+package week4.day2;
+
+import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;  //main method podunga bro testng  
+import org.openqa.selenium.interactions.Actions;
+import org.testng.annotations.Test;
+
+import week1.day2.Array;
+
+public class ChittoGraph {   
+@Test
+
+	public  void runtest() {
+		ChromeDriver driver =  new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+		driver.get("https://www.chittorgarh.com/");
+		WebElement stockmarket = driver.findElement(By.xpath("//a[@title='Stock Market']"));
+		stockmarket.click();
+		
+		WebElement nsebuild = driver.findElement(By.xpath("(//a[@href='/report/stock-nse-bulk-deals/119/'])[1]"));
+		nsebuild.click();
+		
+		  List<WebElement> securitynames = driver.findElements(By.xpath("//td[@class='left-align']/a"));
+		  List<String> list = new ArrayList<String>();
+		  for (WebElement sn : securitynames) {
+			  String listSN = sn.getText();
+			  list.add(listSN);
+			  System.out.println(listSN);
+			  
+			  
+			
+		}
+		
+		
+
+	}
+
+}
